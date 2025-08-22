@@ -26,8 +26,8 @@ variable "rds_instance_type" {
 }
 
 variable "ssh_key_name" {
-  description = "Name of the SSH key pair for EC2"
-  default     = ""
+  description = "SSH key name za EC2 instancu"
+  default = "bogdan111"
 }
 
 variable "db_password" {

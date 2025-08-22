@@ -6,7 +6,6 @@ resource "aws_instance" "ec2_instance" {
   key_name               = var.ssh_key_name
 
   associate_public_ip_address = true
-
   user_data = file("user_data.sh")
 
   tags = {
@@ -17,7 +16,6 @@ resource "aws_instance" "ec2_instance" {
 
   lifecycle {
     ignore_changes = [
-      key_name,
       subnet_id,
     ]
   }
