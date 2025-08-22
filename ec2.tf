@@ -14,4 +14,11 @@ resource "aws_instance" "ec2_instance" {
     Description = "Test instance"
     CostCenter  = "123456"
   }
+
+  lifecycle {
+    ignore_changes = [
+      key_name,
+      subnet_id,
+    ]
+  }
 }
