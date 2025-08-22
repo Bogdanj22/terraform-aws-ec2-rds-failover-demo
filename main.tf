@@ -57,7 +57,7 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.my_ip]
+    cidr_blocks = [var.my_ip]  # preuzima se iz GitHub Secret
   }
 
   ingress {
@@ -72,6 +72,12 @@ resource "aws_security_group" "ec2_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    ignore_changes = [
+      ingress,
+    ]
   }
 }
 

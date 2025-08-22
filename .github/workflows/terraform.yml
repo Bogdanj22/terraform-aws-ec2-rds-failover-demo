@@ -2,7 +2,7 @@ name: Terraform CI/CD
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
   pull_request:
 
@@ -49,5 +49,5 @@ jobs:
         run: terraform plan -var-file="terraform.tfvars"
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -var-file="terraform.tfvars"

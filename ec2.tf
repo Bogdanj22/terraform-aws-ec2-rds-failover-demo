@@ -6,12 +6,17 @@ resource "aws_instance" "ec2_instance" {
   key_name               = var.ssh_key_name
 
   associate_public_ip_address = true
-
   user_data = file("user_data.sh")
 
   tags = {
     Name        = "test-ec2"
     Description = "Test instance"
     CostCenter  = "123456"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      subnet_id,
+    ]
   }
 }
