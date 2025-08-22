@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/Bogdanj22/terraform-aws-ec2-rds-failover-demo.git
+	fetch = +refs/*:refs/*
+	mirror = true

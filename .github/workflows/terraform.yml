@@ -10,6 +10,11 @@ jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
+    env:
+      MY_IP: ${{ secrets.MY_IP }}
+      SSH_KEY_NAME: ${{ secrets.SSH_KEY_NAME }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     steps:
       - name: Checkout repo
