@@ -6,12 +6,6 @@ resource "aws_s3_bucket" "tf_state" {
   }
 }
 
-resource "aws_s3_bucket_acl" "tf_state_acl" {
-  bucket = aws_s3_bucket.tf_state.id
-  acl    = "private"
-}
-
-
 resource "aws_s3_bucket_versioning" "tf_state_versioning" {
   bucket = aws_s3_bucket.tf_state.id
 
