@@ -37,16 +37,16 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Create terraform.tfvars from secrets
-        run: |
-          echo "my_ip = \"${{ env.MY_IP }}\"" > terraform.tfvars
-          echo "ssh_key_name = \"${{ env.SSH_KEY_NAME }}\"" >> terraform.tfvars
-          echo "db_name = \"${{ env.DB_NAME }}\"" >> terraform.tfvars
-          echo "db_password = \"${{ env.DB_PASSWORD }}\"" >> terraform.tfvars
+      # - name: Create terraform.tfvars from secrets
+      #   run: |
+      #     echo "my_ip = \"${{ env.MY_IP }}\"" > terraform.tfvars
+      #     echo "ssh_key_name = \"${{ env.SSH_KEY_NAME }}\"" >> terraform.tfvars
+      #     echo "db_name = \"${{ env.DB_NAME }}\"" >> terraform.tfvars
+      #     echo "db_password = \"${{ env.DB_PASSWORD }}\"" >> terraform.tfvars
 
       - name: Terraform Plan
-        run: terraform plan -var-file="terraform.tfvars"
+        # run: terraform plan -var-file="terraform.tfvars"
 
       - name: Terraform Apply
         if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/main' && github.event_name == 'push')
-        run: terraform apply -auto-approve -var-file="terraform.tfvars"
+        # run: terraform apply -auto-approve -var-file="terraform.tfvars"
