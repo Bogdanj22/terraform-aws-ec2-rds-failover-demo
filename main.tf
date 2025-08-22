@@ -100,9 +100,3 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-variable "vpc_id" {}
-
-data "aws_vpc" "custom_vpc" {
-  id = var.vpc_id
-}
