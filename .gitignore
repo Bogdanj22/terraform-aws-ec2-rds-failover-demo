@@ -6,4 +6,26 @@
 
 # Sensitive files
 *.pem
-vars.tfvars
+*.tfvars
+*.tfvars.json
+
+# Crash log files
+crash.log
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# .terraform directories in submodules
+**/.terraform/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.swp
