@@ -100,3 +100,15 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+variable "vpc_id" {}
+
+data "aws_vpc" "custom_vpc" {
+  id = var.vpc_id
+}
+
+resource "aws_subnet" "public_subnet_a" {
+  vpc_id            = data.aws_vpc.custom_vpc.id
+  availability_zone = "eu-central-1a"
+  cidr_block        = cidrsubnet(data.aws_vpc.custom_vpc.cidr_block, 4, 1)
+}
