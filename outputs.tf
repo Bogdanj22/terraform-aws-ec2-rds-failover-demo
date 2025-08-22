@@ -10,8 +10,3 @@ output "public_subnet_a_id" {
   description = "ID of the public subnet A"
   value       = aws_subnet.public_subnet_a.id
 }
-
-output "public_subnet_b_id" {
-  description = "cidr_block of the public subnet B"
-  value       = aws_subnet.public_subnet_b.cidr_block
-}
