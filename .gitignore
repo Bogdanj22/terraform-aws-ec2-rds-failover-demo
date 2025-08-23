@@ -29,3 +29,7 @@ override.tf.json
 .vscode/
 .idea/
 *.swp
+
+*~
+*.bak
+*.backup
