@@ -10,7 +10,6 @@ jobs:
     name: Terraform
     runs-on: ubuntu-latest
     env:
-      MY_IP: ${{ secrets.MY_IP }}
       SSH_KEY_NAME: ${{ secrets.SSH_KEY_NAME }}
       DB_NAME: ${{ secrets.DB_NAME }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -39,7 +38,6 @@ jobs:
 
       - name: Create terraform.tfvars from secrets
         run: |
-          echo "my_ip = \"${{ env.MY_IP }}\"" > terraform.tfvars
           echo "ssh_key_name = \"${{ env.SSH_KEY_NAME }}\"" >> terraform.tfvars
           echo "db_name = \"${{ env.DB_NAME }}\"" >> terraform.tfvars
           echo "db_password = \"${{ env.DB_PASSWORD }}\"" >> terraform.tfvars
