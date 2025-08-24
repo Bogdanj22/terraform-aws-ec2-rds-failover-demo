@@ -14,7 +14,7 @@ variable "public_subnet_b_cidr" {
 variable "my_ip" {
   description = "Your public IP for SSH access"
   type        = string
-  default     = ""
+  default     = "213.196.96.65/32"
 }
 
 variable "ec2_instance_type" {
