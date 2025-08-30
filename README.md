@@ -4,7 +4,7 @@ The goal of this demo was to deploy a small AWS infrastructure using Terraform. 
 
 
 This is the simple table that I created
-![Example Image](tablw.png)
+![Example Image](table.png)
 
 
 This is the failover demonstration, switching between Mulity AZ
