@@ -1,11 +1,13 @@
-name: Terraform Destroy
+name: Terraform CI/CD
 
 on:
-  workflow_dispatch: # omogućava ručno pokretanje iz Actions taba
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  terraform-destroy:
-    name: Terraform Destroy
+  terraform:
+    name: Terraform
     runs-on: ubuntu-latest
     env:
       SSH_KEY_NAME: ${{ secrets.SSH_KEY_NAME }}
@@ -31,11 +33,18 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Validate
+        run: terraform validate
+
       - name: Create terraform.tfvars from secrets
         run: |
           echo "ssh_key_name = \"${{ env.SSH_KEY_NAME }}\"" >> terraform.tfvars
           echo "db_name = \"${{ env.DB_NAME }}\"" >> terraform.tfvars
           echo "db_password = \"${{ env.DB_PASSWORD }}\"" >> terraform.tfvars
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve -var-file="terraform.tfvars"
+      - name: Terraform Plan
+        run: terraform plan -var-file="terraform.tfvars"
+
+      - name: Terraform Apply
+        if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/main' && github.event_name == 'push')
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
